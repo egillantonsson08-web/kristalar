@@ -1,0 +1,24 @@
+# Aðeins vefurinn sjálfur fer á GitHub. Allt annað í möppunni
+# (frumrit mynda, tilraunir, Word-skjalið, node_modules ...) er skilið eftir.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/ferd.html
+!/styles.css
+!/main.js
+!/robots.txt
+!/sitemap.xml
+!/favicon.ico
+!/favicon.svg
+!/apple-touch-icon.png
+!/merki.png
+!/og-forsida.jpg
+!/og-ferd.jpg
+!/engine/
+!/assets/
+/assets/*
+!/assets/radgjof-700.webp
+!/assets/radgjof-1000.webp
+!/assets/verslun-800.webp
+!/assets/verslun-1280.webp

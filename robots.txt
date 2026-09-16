@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://egillantonsson08-web.github.io/kristalar/sitemap.xml
