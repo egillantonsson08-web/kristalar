@@ -5,6 +5,7 @@
 !/.nojekyll
 !/index.html
 !/ferd.html
+!/skraning.html
 !/styles.css
 !/main.js
 !/robots.txt
@@ -15,10 +16,13 @@
 !/merki.png
 !/og-forsida.jpg
 !/og-ferd.jpg
+!/postur/
 !/engine/
 !/assets/
 /assets/*
 !/assets/radgjof-700.webp
+!/assets/skraning-800.webp
+!/assets/skraning-1400.webp
 !/assets/radgjof-1000.webp
 !/assets/verslun-800.webp
 !/assets/verslun-1280.webp

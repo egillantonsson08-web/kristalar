@@ -1041,3 +1041,156 @@ a{ color:inherit; }
   .ferd-lok{ padding:var(--bil-4) var(--bil-3); }
   .ferd-lok-hnappar .hnappur{ width:100%; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   SKRÁNINGARSÍÐA (skraning.html)
+   Sama útlit og vefurinn að öðru leyti, en engin valmynd:
+   hver hlekkur út af síðunni er einn sem hættir við skráninguna.
+   ═══════════════════════════════════════════════════════ */
+
+.skra-sida{ padding-top:0; }
+
+.skra-hetja{
+  position:relative; overflow:hidden;
+  min-height:min(82svh, 720px);
+  display:grid; align-items:center;
+  padding:clamp(120px, 16vh, 180px) var(--umgjord) clamp(60px, 9vh, 110px);
+}
+.skra-hetja-mynd{ position:absolute; inset:0; z-index:0; }
+.skra-hetja-mynd img{ width:100%; height:100%; object-fit:cover; transform:scale(1.06); }
+.skra-hetja-slaeda{
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(ellipse 75% 60% at 28% 50%, rgba(11,10,14,.4) 0%, rgba(11,10,14,.9) 72%),
+    linear-gradient(to right, rgba(11,10,14,.95) 0%, rgba(11,10,14,.74) 48%, rgba(11,10,14,.58) 100%),
+    linear-gradient(to top, var(--nott) 2%, transparent 42%);
+}
+.skra-hetja-inn{
+  position:relative; z-index:2;
+  max-width:var(--breidd); width:100%; margin:0 auto;
+}
+.skra-yfir{
+  font-size:.75rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gull); margin:0 0 var(--bil-3);
+}
+.skra-fyrirsogn{
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(2.6rem, 6.4vw, 4.6rem);
+  line-height:1.03; letter-spacing:-.01em;
+  margin:0 0 var(--bil-3); max-width:14ch;
+}
+.skra-fyrirsogn em{ font-style:italic; color:var(--gull-bjart); }
+.skra-undir{
+  font-size:1.05rem; color:var(--kerti-mid);
+  max-width:52ch; margin:0 0 var(--bil-4);
+}
+
+/* ── Vinstri dálkur: hvað færðu ── */
+.skra-kostir{ list-style:none; margin:var(--bil-4) 0 0; padding:0; }
+.skra-kostir li{
+  display:grid; grid-template-columns:auto 1fr; gap:var(--bil-3);
+  padding:var(--bil-3) 0; border-top:1px solid var(--berg-brun);
+}
+.skra-kostur-nr{
+  font-family:var(--serif); font-size:1.5rem; line-height:1;
+  color:var(--gull); padding-top:2px;
+}
+.skra-kostir strong{
+  display:block; font-weight:500; font-size:.98rem;
+  color:var(--kerti); margin-bottom:5px;
+}
+.skra-kostir span span, .skra-kostir li > span:last-child{
+  font-size:.92rem; color:var(--kerti-mid); line-height:1.6;
+}
+.skra-loford{
+  margin:var(--bil-4) 0 0; padding:var(--bil-3);
+  border:1px solid var(--gull-dauft); border-radius:var(--kantur);
+  background:rgba(201,169,106,.05);
+  font-size:.88rem; line-height:1.65; color:var(--kerti-mid);
+}
+
+/* ── Formið ── */
+.skra-form-haus{
+  margin:0 0 var(--bil-4);
+  font-size:.72rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gull);
+}
+.hopur{ border:0; padding:0; margin:0 0 var(--bil-4); min-width:0; }
+.hopur legend{
+  padding:0; margin-bottom:8px;
+  font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--kerti-mid);
+}
+.hjalp--ofan{ margin:0 0 12px; }
+
+.val-listi{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.val-listi--einn{ grid-template-columns:1fr; }
+/* Sértæknin verður að slá .reitur label, sem er hástafa og blokk. */
+.reitur label.val{
+  display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start;
+  padding:12px 14px; margin:0; cursor:pointer;
+  background:var(--berg); border:1px solid var(--berg-brun);
+  border-radius:var(--kantur-litill);
+  font-family:var(--sans); font-size:.9rem; font-weight:300;
+  line-height:1.45; letter-spacing:0; text-transform:none;
+  color:var(--kerti-mid);
+  transition:border-color .2s var(--mjukt), background .2s var(--mjukt), color .2s var(--mjukt);
+}
+.reitur label.val:hover{ border-color:var(--gull-dauft); color:var(--kerti); }
+.reitur label.val input{
+  width:16px; height:16px; margin:3px 0 0; padding:0;
+  background:none; border:0; border-radius:0; flex:none;
+}
+.reitur label.val:has(input:checked){
+  border-color:var(--gull); background:rgba(201,169,106,.07); color:var(--kerti);
+}
+.reitur label.val:has(input:focus-visible){ outline:2px solid var(--gull-bjart); outline-offset:2px; }
+.reitur label.val--eitt{ padding:14px 16px; }
+.reitur label.val--eitt a{ color:var(--gull); text-underline-offset:3px; }
+
+.reitur.samthykki label.val{ background:var(--berg-hatt); }
+.reitur label.val.villugildi{ border-color:#E08585; }
+
+/* Gildran má ekki sjást en má heldur ekki vera display:none,
+   því sum vélmenni hunsa reiti sem eru faldir þannig. */
+.gildra{
+  position:absolute; left:-9999px; width:1px; height:1px;
+  overflow:hidden; opacity:0;
+}
+
+.skra-smatt{
+  margin:var(--bil-3) 0 0; font-size:.82rem; line-height:1.6;
+  color:var(--kerti-dauft);
+}
+
+/* ── Persónuvernd ── */
+.personuvernd .stefna-yfir{
+  font-size:.75rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gull); margin:0 0 var(--bil-2);
+}
+.pv-listi{ margin:0; }
+.pv-listi > div{
+  display:grid; grid-template-columns:200px 1fr; gap:var(--bil-3);
+  padding:var(--bil-3) 0; border-top:1px solid var(--berg-brun);
+}
+.pv-listi dt{
+  font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gull);
+}
+.pv-listi dd{ margin:0; font-size:.94rem; line-height:1.7; color:var(--kerti-mid); }
+.pv-listi a{ color:var(--kerti); text-decoration:underline; text-underline-offset:3px; }
+
+@media (max-width: 900px){
+  .val-listi{ grid-template-columns:1fr; }
+  .pv-listi > div{ grid-template-columns:1fr; gap:8px; }
+}
+@media (max-width: 640px){
+  .skra-fyrirsogn{ max-width:none; }
+  .skra-hetja .hnappur{ width:100%; }
+}
+
+/* Þegar skráningin er komin í gegn má hnappurinn ekki líta út fyrir að vera virkur. */
+.hnappur[disabled]{
+  background:var(--berg-hatt); border-color:var(--berg-brun);
+  color:var(--kerti-dauft); cursor:default; transform:none;
+}

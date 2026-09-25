@@ -948,6 +948,67 @@
     });
   }
 
+  /* ───────── Skráning á póstlista ─────────
+     Sama mynstur og bókunarformið. Engin bakendaþjónusta er tengd ennþá,
+     svo við sýnum staðfestingarskrefið (double opt-in) hérna á síðunni. */
+  var sForm = document.getElementById("skra-form");
+
+  if (sForm) {
+    sForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      /* Gildran: sé hún útfyllt er þetta vélmenni. Við látum sem ekkert sé. */
+      if (document.getElementById("s-vefsida").value) return;
+
+      var nafn = document.getElementById("s-nafn");
+      var netfang = document.getElementById("s-netfang");
+      var samthykki = document.getElementById("s-samthykki");
+      var ahugi = sForm.querySelectorAll('input[name="ahugi"]:checked');
+
+      var ok = true;
+      ok = villa(nafn, document.getElementById("villa-s-nafn"),
+        nafn.value.trim() ? "" : "Sláðu inn fornafnið þitt.") && ok;
+      ok = villa(netfang, document.getElementById("villa-s-netfang"),
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(netfang.value.trim()) ? "" : "Sláðu inn gilt netfang.") && ok;
+
+      var ahugiVilla = document.getElementById("villa-ahugi");
+      if (!ahugi.length) {
+        ahugiVilla.textContent = "Veldu að minnsta kosti eitt, svo við vitum hverju við eigum að senda þér.";
+        ahugiVilla.hidden = false;
+        ok = false;
+      } else {
+        ahugiVilla.hidden = true;
+      }
+
+      var sVilla = document.getElementById("villa-s-samthykki");
+      if (!samthykki.checked) {
+        sVilla.textContent = "Við megum ekki senda þér póst nema þú samþykkir þetta.";
+        sVilla.hidden = false;
+        samthykki.closest(".val").classList.add("villugildi");
+        ok = false;
+      } else {
+        sVilla.hidden = true;
+        samthykki.closest(".val").classList.remove("villugildi");
+      }
+
+      if (!ok) {
+        var fyrsta = sForm.querySelector('[aria-invalid="true"]') ||
+          (!ahugi.length ? document.getElementById("ahugi").querySelector("input") : samthykki);
+        if (fyrsta) fyrsta.focus();
+        return;
+      }
+
+      var sSvar = document.getElementById("skra-svar");
+      sSvar.hidden = false;
+      sSvar.textContent =
+        "Næstum því búið. Við sendum staðfestingarpóst á " + netfang.value.trim() +
+        ". Smelltu á hlekkinn í honum og þá ertu komin eða kominn á listann. " +
+        "Sjáirðu hann ekki eftir nokkrar mínútur, kíktu þá í ruslpóstinn.";
+      sForm.querySelector('button[type="submit"]').disabled = true;
+      sSvar.focus();
+    });
+  }
+
   /* ───────── Ártal í fæti ───────── */
   var ar = document.getElementById("ar");
   if (ar) ar.textContent = new Date().getFullYear();
