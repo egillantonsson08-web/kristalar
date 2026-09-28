@@ -1194,3 +1194,26 @@ a{ color:inherit; }
   background:var(--berg-hatt); border-color:var(--berg-brun);
   color:var(--kerti-dauft); cursor:default; transform:none;
 }
+
+/* Boðið um póstlistann neðst í ferðinni, undir lokakassanum.
+   Útlínuhnappur en ekki gegnheill, svo bókunin fyrir ofan haldi forgangi. */
+.ferd-postlisti{
+  max-width:640px; margin:var(--bil-5) auto 0; text-align:center;
+  padding-top:var(--bil-5); border-top:1px solid var(--berg-brun);
+}
+.ferd-postlisti-yfir{
+  font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--gull); margin:0 0 var(--bil-2);
+}
+.ferd-postlisti-fyrirsogn{
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(1.5rem, 3vw, 2.1rem); line-height:1.15;
+  margin:0 0 var(--bil-2);
+}
+.ferd-postlisti-undir{
+  font-size:.95rem; color:var(--kerti-mid);
+  max-width:48ch; margin:0 auto var(--bil-4);
+}
+@media (max-width: 640px){
+  .ferd-postlisti .hnappur{ width:100%; }
+}
